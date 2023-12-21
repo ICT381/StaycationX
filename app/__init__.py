@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 
 # from flask_mongoengine import MongoEngine, Document
 # from flask_login import LoginManager
@@ -20,10 +21,13 @@ from .routes import main
 def create_app():
     app = Flask(__name__)
 
+    host = 'localhost' if os.getenv('FLASK_ENV') == 'development' else 'db'
+
     app.config['MONGODB_SETTINGS'] = {
         'db':'staycation',
-        # 'host':'localhost'
-        'host':'db'
+        # 'host':'localhost' # choose this one when running locally
+        # 'host':'db'      # choose this one when running as containers
+        'host' : host
     }
     app.static_folder = 'assets'
     
