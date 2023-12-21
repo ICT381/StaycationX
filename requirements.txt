@@ -1,0 +1,17 @@
+click
+Flask==2.2.2
+Flask-Login
+flask-mongoengine
+Flask-WTF
+itsdangerous
+Jinja2==3.0.0
+MarkupSafe
+mongoengine
+pymongo
+six
+Werkzeug==2.2.2
+WTForms==2.3.3
+email_validator
+flask-debugtoolbar==0.11.0 
+Flask-CORS
+flask-httpauth

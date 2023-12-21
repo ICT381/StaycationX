@@ -1,0 +1,17 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+#cache
+app/__pycache__/
+app/__pycache__/*.pyc
+__pycache__/
+__pycache__/*.pyc
+app/controllers/__pycache__/*.pyc
+app/models/__pycache__/*.pyc
+*.pyc
