@@ -20,7 +20,7 @@ api = Blueprint('api', __name__)
 api_auth = HTTPBasicAuth()
 
 @api.route('/api/user/gettoken', methods=['POST'])
-@cross_origin(origin='http://localhost:3000')
+# @cross_origin(origin='http://localhost:3000')
 def api_gettoken():
     if request.method == 'POST': 
 
@@ -85,7 +85,7 @@ def extract_keys(dictionary, running_id=1):
     return extracted_data
     
 @api.route('/api/package/getAllPackages', methods=['POST'])
-@cross_origin(origin='http://localhost:3000')
+# @cross_origin(origin='http://localhost:3000')
 @api_auth.login_required
 def getAllPackages():
     allPackages = Package.getAllPackages()
