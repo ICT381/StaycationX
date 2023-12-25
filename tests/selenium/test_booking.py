@@ -1,3 +1,9 @@
+# Must consult the table in https://firefox-source-docs.mozilla.org/testing/geckodriver/Support.html 
+# to identify compatible versions of geckodriver and Firefox
+# In my wsl, I use the top line of the table, which is geckodriver v0.33.0 and Firefox > 102 ESR
+# export DISPLAY=ip_address:0.0
+# export LIBGL_ALWAYS_INDIRECT=1
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
