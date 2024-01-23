@@ -14,6 +14,11 @@
 # by moving config file /d/tars/config.xlaunch to %APPDATA%\roaming\Microsoft\Windows\Start Menu\Programs\Startup 
 # config.xlaunch is configured by starting Xlaunch and saving the config file
 
+# When run by it by pytest, you can first set PYTHONPATH to the root of the project
+# export PYTHONPATH=/d/tars/staycationX or export PYTHONPATH="${PYTHONPATH}:."
+# Then run: pytest -s -v tests/selenium/test_booking.py
+# Or: MOZ_HEADLESS=1 pytest -s -v tests/selenium/test_booking.py
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
