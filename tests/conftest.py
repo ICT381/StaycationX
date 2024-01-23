@@ -5,6 +5,7 @@ import pytest
 from app.extensions import db, login_manager, cors
 from app import create_app
 
+# The "autouse=True" means that this fixture will be automatically used by all the tests.
 @pytest.fixture(scope='session', autouse=True)
 def setup_app():
 

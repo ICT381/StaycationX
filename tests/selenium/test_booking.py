@@ -28,6 +28,19 @@ def test_booking():
     options = FirefoxOptions()
     # options.headless = True
 
+    # To run headless firefox, need to set MOZ_HEADLESS environment variable to 1
+    # Configure launch.json with the following statement
+    # {
+    #        "type": "python",
+    #        "request": "launch",
+    #        "name": "pytest",
+    #        "module": "pytest",
+    #        "env": {
+    #          "MOZ_HEADLESS":"1"
+    #        }
+    # }
+    # And use the debug in VSCode to run pytest
+    
     if os.getenv('MOZ_HEADLESS') == '1':
         options.add_argument("--headless")  
         options.add_argument("--window-size=1920x1080") 
