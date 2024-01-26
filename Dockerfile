@@ -24,4 +24,5 @@ WORKDIR /staycation
 
 # EXPOSE 5000
 # # CMD ["gunicorn", "--bind", "0.0.0.0:5000", "-m", "007", "app:app"]
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "-m", "007", "app:create_app()"]
+#CMD ["gunicorn", "--bind", "0.0.0.0:5000", "-m", "007", "app:create_app()"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "-m", "007", "--worker-class", "gevent", "--workers", 5, "--worker-connections", 1000, "app:create_app()"]
