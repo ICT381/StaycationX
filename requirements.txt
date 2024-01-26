@@ -17,3 +17,6 @@ Flask-CORS
 flask-httpauth
 pytest
 selenium
+gunicorn
+locust
+
