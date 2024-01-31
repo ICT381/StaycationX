@@ -13,11 +13,26 @@ services:
 
   db:
     container_name: ict381db
-    image: mongo
+    image: ict381mongo
+    build:
+      context: .
+      dockerfile: DockerfileMongo
     networks:
       - ict381network
     ports:
       - "27017:27017"
+
+  nginx:
+    container_name: nginx
+    build: 
+      context: .
+      dockerfile: DockerfileNginx
+    networks:
+      - ict381network
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
 
 networks:
   ict381network:
