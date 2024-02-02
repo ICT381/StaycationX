@@ -12,9 +12,6 @@ def test_new_user():
     user = User.createUser(email="john@cde.com",password=hashpass, name="John Song")
     assert user.email == 'john@cde.com'
     assert user.password == hashpass
-    # assert user.is_authenticated
-    # assert user.is_active
-    # assert not user.is_anonymous
 
 class test_new_user_methods(unittest.TestCase):
     
