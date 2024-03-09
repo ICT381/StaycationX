@@ -25,7 +25,7 @@ RUN apt update && \
     printf "Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n" > /etc/apt/preferences.d/mozilla && \
     apt update && \
     apt install firefox -y && \
-    chmod a+X /opt/geckodriver
+    chmod a+x /opt/geckodriver
 
 WORKDIR /staycation
 CMD ["gunicorn", "--bind", "0.0.0.0:5000",  "-m", "007", "--workers", "5", "app:create_app()"]
