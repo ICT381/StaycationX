@@ -10,7 +10,8 @@ from app import create_app
 def setup_app():
 
     # Set the app to testing mode connect to localhost
-    os.environ['FLASK_ENV'] = 'development'
+    ## if FLASK_ENV is set to 'development' in the environment, in containers it will be set to localhost instead of db
+    #os.environ['FLASK_ENV'] = 'development'
     # os.setenv('FLASK_ENV', 'development')
 
     app = create_app()  # replace 'testing' with your actual testing config
