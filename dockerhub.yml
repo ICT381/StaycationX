@@ -9,13 +9,13 @@ services:
     networks:
       - ict381network
   db:
-    image: paulhjwu/ict381_mongo:v.0.1
+    image: suss001/ict381_mongo:0.01
     ports:
       - "27017:27017"
     networks:
       - ict381network
   nginx:
-    image: paulhjwu/ict381_nginx:v.0.1
+    image: suss001/ict381_nginx:0.01
     ports:
       - "80:80"
     networks:
