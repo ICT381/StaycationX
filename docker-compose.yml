@@ -1,47 +1,45 @@
-#  To remove all containers and images
-# sudo docker stop $(sudo docker ps -a -q)
-# sudo docker rm $(sudo docker ps -a -q)
-# sudo docker rmi -f $(sudo docker images -aq)
-
-# Video on docker tutorial
-# https://www.youtube.com/playlist?list=PLy7NrYWoggjzfAHlUusx2wuDwfCrmJYcs 
-
 version: "3.8"
 
 services:
-
-  frontend:
-    container_name: ict381app
-    image: ict381_staycation
-    build: .
-    networks:
-      - ict381network
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqube
+    hostname: sonarqube
     ports:
-      - "5000:5000"
+      - 9000:9000
+    environment:
+      - sonar.jdbc.username=admin
+      - sonar.jdbc.password=admin
+    volumes:
+      - ./logs:/opt/sonarqube/logs
+      - ./data:/opt/sonarqube/data
+      - ./extensions:/opt/sonarqube/extensions
+    networks:
+      - sonarnetwork
 
   db:
-    container_name: ict381db
-    image: ict381_mongo
-    build:
-      context: .
-      dockerfile: DockerfileMongo
+    image: postgres
+    container_name: db
+    hostname: db
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - ./pg_db:/var/lib/postgresql
+      - ./pg_data:/var/lib/postgresql/data
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     networks:
-      - ict381network
-    ports:
-      - "27017:27017"
+      - sonarnetwork
 
-  nginx:
-    container_name: ict381web
-    image: ict381_nginx
-    build: 
-      context: .
-      dockerfile: DockerfileNginx
-    networks:
-      - ict381network
-    ports:
-      - "80:80"
-    depends_on:
-      - frontend
+volumes:
+  pg_db:
+    driver: local
+  pg_data:
+    driver: local
 
 networks:
-  ict381network:
+  sonarnetwork:
+

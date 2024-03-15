@@ -1,45 +1,28 @@
 version: "3.8"
 
 services:
-  sonarqube:
-    image: sonarqube
-    container_name: sonarqube
-    hostname: sonarqube
+
+  frontend:
+    image: suss001/ict381_staycation:0.02
     ports:
-      - 9000:9000
-    environment:
-      - sonar.jdbc.username=admin
-      - sonar.jdbc.password=admin
-    volumes:
-      - ./logs:/opt/sonarqube/logs
-      - ./data:/opt/sonarqube/data
-      - ./extensions:/opt/sonarqube/extensions
+      - "5000:5000"
     networks:
-      - sonarnetwork
-
+      - ict381network
   db:
-    image: postgres
-    container_name: db
-    hostname: db
-    environment:
-      - POSTGRES_USER=sonar
-      - POSTGRES_PASSWORD=sonar
-    volumes:
-      - ./pg_db:/var/lib/postgresql
-      - ./pg_data:/var/lib/postgresql/data
-    ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
+    image: suss001/ict381_mongo:0.01
+    ports:
+      - "27017:27017"
     networks:
-      - sonarnetwork
-
-volumes:
-  pg_db:
-    driver: local
-  pg_data:
-    driver: local
+      - ict381network
+  nginx:
+    image: suss001/ict381_nginx:0.01
+    ports:
+      - "80:80"
+    networks:
+      - ict381network
+    depends_on:
+      - frontend
 
 networks:
-  sonarnetwork:
+  ict381network:
 
