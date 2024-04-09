@@ -39,6 +39,7 @@ def create_app():
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
     app.config['DEBUG_TB_ENABLED'] = True
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+    app.config.update(SESSION_COOKIE_HTTPONLY=False)
     # app.config['SECRET_KEY'] = 'your_secret_key'
     # login_manager = LoginManager()
     
