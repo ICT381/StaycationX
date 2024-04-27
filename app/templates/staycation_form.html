@@ -1,0 +1,37 @@
+<!-- The images are from: https://sha.org.sg/staycation-deals -->
+{% from "_render_field.html" import render_field %}
+{% extends "base.html" %}
+{% block mainblock %}
+<style>
+    .acontainer {
+      text-align: left;  /* Sets text justification to left for all elements within .container */
+    }
+</style>
+<div class="acontainer mt-2 card-body col-xl-4 col-sm-6 p-2">
+    <h2>Staycation Details</h2>
+    <form method="POST" action="/create_staycation">
+        <div class="form-group">
+            <label for="hotel_name">Hotel Name:</label>
+            <input type="text" class="form-control" id="hotel_name" name="hotel_name" required>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration (days):</label>
+            <input class="form-control" id="duration" name="duration" required>
+        </div>
+        <div class="form-group">
+            <label for="unit_cost">Unit Cost ($):</label>
+            <input class="form-control" id="unit_cost" name="unit_cost" required>
+        </div>
+        <div class="form-group">
+            <label for="image_url">Image URL:</label>
+            <input type="text" class="form-control" id="image_url" name="image_url">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -16,11 +16,23 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">{{package.hotel_name}}</h5>
-        <p class="card-text">{{package.description}}</p>
+
+        <!-- | safe inserted below to intro vulnearability -->
+        <p id="hack" value="{{package.description|safe}}" class="card-text">{{package.description|safe}}</p>
+        <p class="card-text">Unit Price: {{package.unit_cost}}</p>
+
+
         <a href="/viewPackageDetail/{{package.hotel_name}}" class="btn btn-primary">Details</a>
         <a href="/view?hotel_name='{{package.hotel_name}}'" class="btn btn-primary">Book</a>
       </div>
     </div>
   </div>
   {% endfor %}
+</div>
+  
+<!-- Introduce a vulnerability by clicking the button below -->
+<div>
+  <a href="/redirect?query=1" class="btn btn-primary">Back to Top</a>
+</div>
+
   {% endblock %}

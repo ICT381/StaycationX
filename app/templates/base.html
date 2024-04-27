@@ -47,12 +47,12 @@
               {% endif %}
               <a href="#" id="query-output" value="{{current_user.name|safe}}" class="text-white">{{ current_user.name }} </a>
               <!-- <span id="query-output" value="{{current_user.name|safe}}" class="query"></span> -->
-              <script>
+              <!-- <script>
                 debugger;
                 var myElem=document.getElementById('query-output');
                 var t1= myElem.getAttribute("value");
                 document.getElementById('query-output').innerHTML=t1;
-              </script>
+              </script> -->
             </div>
             {% endif %}
             <ul class="navbar-nav flex-column mt-4">
@@ -70,6 +70,11 @@
                     class="fas fa-chart-area text-light fa-lg mr-3"></i>Dashboard</a></li>
               <li class="nav-item"><a href="/upload" class="nav-link text-white p-3 mb-2 sidebar-link"><i
                     class="fas fa-cloud-upload-alt text-light fa-lg mr-3"></i>Upload</a></li>
+                    
+              <!-- Added for vulnerability -->
+              <li class="nav-item"><a href="/create_staycation" class="nav-link text-white p-3 mb-2 sidebar-link"><i
+                class="fas fa-cloud-upload-alt text-light fa-lg mr-3"></i>Add Staycation</a></li>
+                
 
               {% else %}
               {% if current_user.is_authenticated %}
