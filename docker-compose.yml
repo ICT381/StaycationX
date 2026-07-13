@@ -6,11 +6,9 @@
 # Video on docker tutorial
 # https://www.youtube.com/playlist?list=PLy7NrYWoggjzfAHlUusx2wuDwfCrmJYcs 
 
-version: "3.8"
-
 services:
 
-  frontend:
+  backend:
     container_name: ict381app
     image: ict381_staycation
     build: .
@@ -41,7 +39,7 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - frontend
+      - backend
 
 networks:
   ict381network:

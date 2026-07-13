@@ -1,8 +1,7 @@
-version: "3.8"
 
 services:
 
-  frontend:
+  backend:
     image: suss001/ict381_staycation
     ports:
       - "5000:5000"
@@ -21,7 +20,7 @@ services:
     networks:
       - ict381network
     depends_on:
-      - frontend
+      - backend
 
 networks:
   ict381network:
